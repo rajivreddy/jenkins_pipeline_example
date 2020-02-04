@@ -1,5 +1,5 @@
 node {
-   stage("Clone Repo with $ref branch"){
+   stage("Clone Repo"){
       git branch: "${ref}", credentialsId: "gitaccess", url: "${ssh_url}"
    }
 }
