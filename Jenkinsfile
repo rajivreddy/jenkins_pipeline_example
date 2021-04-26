@@ -6,13 +6,14 @@ def generator = { String alphabet, int n ->
 
 pipeline {
   agent any
+  token_data = generator( (('A'..'Z')+('0'..'9')).join(), 16 )
   triggers {
     GenericTrigger(
      genericVariables: [
       [key: 'ref', value: '$.ref']
      ],
 
-     token: generator( (('A'..'Z')+('0'..'9')).join(), 16 ),
+     token: token_data,
      
      causeString: 'Triggered on $ref',
      
