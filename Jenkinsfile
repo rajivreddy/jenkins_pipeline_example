@@ -16,7 +16,7 @@ node {
 
     causeString: 'Triggered on $ref',
 
-    token: generator( (('A'..'Z')+('0'..'9')).join(), 16 ),
+    token: env.JOB_NAME,
     tokenCredentialId: '',
 
     printContributedVariables: true,
