@@ -13,7 +13,17 @@ pipeline {
       [key: 'ref', value: '$.ref']
      ],
 
-     token: token_data,
+    //  token: token_data,
+
+    properties([
+    pipelineTriggers([
+    [$class: 'GenericTrigger',
+        ...
+        token: generator( (('A'..'Z')+('0'..'9')).join(), 16 ),
+        ...
+    ]
+    ])
+    ])
      
      causeString: 'Triggered on $ref',
      
