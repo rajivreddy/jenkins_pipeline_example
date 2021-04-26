@@ -1,12 +1,5 @@
-def generator = { String alphabet, int n ->
-  new Random().with {
-    (1..n).collect { alphabet[ nextInt( alphabet.length() ) ] }.join()
-  }
-}
-
-
 node {
-  dev token_data = generator( (('A'..'Z')+('0'..'9')).join(), 16 )
+  def verCode = UUID.randomUUID().toString()
  properties([
   pipelineTriggers([
    [$class: 'GenericTrigger',
@@ -17,7 +10,7 @@ node {
 
     causeString: 'Triggered on $ref',
 
-    token: '$token_data',
+    token: verCode,
     tokenCredentialId: '',
 
     printContributedVariables: true,
