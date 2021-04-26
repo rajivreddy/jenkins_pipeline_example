@@ -14,7 +14,7 @@ pipeline {
      printPostContent: true,
     
      regexpFilterText: '$ref',
-     regexpFilterExpression: 'refs/heads/master'
+     regexpFilterExpression: 'refs/heads/master|refs/heads/dev|refs/heads/stage'
     )
   }
   stages {
