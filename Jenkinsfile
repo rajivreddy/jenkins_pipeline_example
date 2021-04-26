@@ -31,7 +31,7 @@ node {
 
 
 pipeline {
-  def last = ref.tokenize('.').last()
+  def last = env.ref.tokenize('.').last()
   agent any
   stages {
     stage('Some step') {
