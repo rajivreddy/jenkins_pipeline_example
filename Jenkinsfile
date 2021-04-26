@@ -30,9 +30,11 @@ node {
 }
 
 
+def s = env.ref
+git_branch = s.tokenize('/').last()
+
 pipeline {
-  def s = env.ref
-  git_branch = s.tokenize('.').last()
+  
   agent any
   stages {
     stage('Some step') {
