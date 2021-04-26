@@ -4,7 +4,11 @@ node {
   pipelineTriggers([
    [$class: 'GenericTrigger',
     genericVariables: [
-     [key: 'ref', value: '$.ref']
+     [key: 'ref', value: '$.ref'],
+     [
+      key: 'https_url',
+      value: 'clone_url',
+     ]
     ],
 
 
@@ -27,11 +31,13 @@ node {
 
 
 pipeline {
+  def last = ref.tokenize('.').last()
   agent any
   stages {
     stage('Some step') {
       steps {
-        sh "echo $ref"
+        sh "Branch Name is echo $ref"
+        sh "Repo URL is $clone_url"
       }
     }
   }
