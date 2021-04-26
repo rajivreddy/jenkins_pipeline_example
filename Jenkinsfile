@@ -1,3 +1,9 @@
+def generator = { String alphabet, int n ->
+  new Random().with {
+    (1..n).collect { alphabet[ nextInt( alphabet.length() ) ] }.join()
+  }
+}
+
 pipeline {
   agent any
   triggers {
@@ -6,7 +12,7 @@ pipeline {
       [key: 'ref', value: '$.ref']
      ],
 
-     token: 'abc123',
+     token: generator( (('A'..'Z')+('0'..'9')).join(), 16 ),
      
      causeString: 'Triggered on $ref',
      
