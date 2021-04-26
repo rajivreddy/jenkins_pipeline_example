@@ -6,6 +6,7 @@ def generator = { String alphabet, int n ->
 
 
 node {
+  dev token_data = generator( (('A'..'Z')+('0'..'9')).join(), 16 )
  properties([
   pipelineTriggers([
    [$class: 'GenericTrigger',
@@ -16,7 +17,7 @@ node {
 
     causeString: 'Triggered on $ref',
 
-    token: env.JOB_NAME,
+    token: '$token_data',
     tokenCredentialId: '',
 
     printContributedVariables: true,
