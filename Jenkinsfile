@@ -7,7 +7,7 @@ node {
      [key: 'ref', value: '$.ref'],
      [
       key: 'https_url',
-      value: 'clone_url',
+      value: '$.repository.clone_url',
      ]
     ],
 
