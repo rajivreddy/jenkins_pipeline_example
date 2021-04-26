@@ -31,12 +31,13 @@ node {
 
 
 pipeline {
-  def last = env.ref.tokenize('.').last()
+  def s = env.ref
+  git_branch = s.tokenize('.').last()
   agent any
   stages {
     stage('Some step') {
       steps {
-        sh "Branch Name is echo $ref"
+        sh "Branch Name is echo $git_branch"
         sh "Repo URL is $clone_url"
       }
     }
