@@ -19,7 +19,7 @@ secretText = new StringCredentialsImpl(
 store.addCredentials(domain, secretText)
 
 node {
-  def verCode = UUID.randomUUID().toString()
+ 
  properties([
   pipelineTriggers([
    [$class: 'GenericTrigger',
